@@ -67,3 +67,24 @@ describe('substitutionEncode', () => {
     expect(actual).to.equal(expected);
   });
 });
+
+describe('substitutionDecode', () => {
+  it('should decode a message with valid arguments', () => {
+    const actual = substitutionDecode(
+      'jrufscpw',
+      'xoyqmcgrukswaflnthdjpzibev',
+      false
+    );
+    const expected = 'thinkful';
+    expect(actual).to.equal(expected);
+  });
+  it('should decode a message with multiple words and valid arguments', () => {
+    const actual = substitutionDecode(
+      'elp xhm xf mbymwwmfj dne',
+      'xoyqmcgrukswaflnthdjpzibev',
+      false
+    );
+    const expected = 'youareanexcellentspy';
+    expect(actual).to.equal(expected);
+  });
+});
