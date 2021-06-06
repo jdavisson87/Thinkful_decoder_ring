@@ -15,16 +15,17 @@ const caesarModule = (function () {
       if (letter < 97 || letter > 122) {
         return String.fromCharCode(letter);
       }
-      letter = letter - 97 + shift;
-      // assign each letter a number
+      // assign each letter the charCode number
+      // take away 97 for clarity, so we are only dealing with values 0 - 25
       // add shift value
+      letter = letter - 97 + shift;
       // assign letters to the new number value
       // create conditions if letter value is <0 or >25
       if (letter < 0) {
         letter = 26 + letter;
       }
       if (letter > 25) {
-        letter = 25 - letter;
+        letter = (letter % 25) - 1;
       }
       letter += 97;
       return String.fromCharCode(letter);
@@ -43,26 +44,28 @@ const caesarModule = (function () {
     // create a result variable
     let result;
 
+    // figure out if encode or decode is necessary
+    if (!encode) {
+      shift *= -1;
+    }
     // set input message to lower case
+    // split input by ' '
     result = input
       .toLowerCase()
       .split(' ')
       .map((word) => convertWord(word, shift));
 
-    // figure out if encode or decode is necessary
-    if (!encode) {
-      shift *= -1;
-    }
-    // split input by ' '
-
-    // join letters back into words
     // join words with ' '
     return result.join(' ');
   };
 
   return {
     caesar,
+    convertWord,
   };
 })();
 
-module.exports = { caesar: caesarModule.caesar };
+module.exports = {
+  caesar: caesarModule.caesar,
+  convertWord: caesarModule.convertWord,
+};
