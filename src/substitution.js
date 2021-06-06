@@ -103,7 +103,13 @@ const substitutionModule = (function () {
 
   return {
     substitution,
+    substitutionEncode,
+    substitutionDecode,
   };
 })();
 
-module.exports = { substitution: substitutionModule.substitution };
+module.exports = {
+  substitution: substitutionModule.substitution,
+  substitutionEncode: substitutionModule.substitutionEncode,
+  substitutionDecode: substitutionModule.substitutionDecode,
+};
