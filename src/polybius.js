@@ -42,7 +42,13 @@ const polybiusModule = (function () {
 
   return {
     polybius,
+    convertPolybiusWordEncode,
+    convertPolybiusWordDecode,
   };
 })();
 
-module.exports = { polybius: polybiusModule.polybius };
+module.exports = {
+  polybius: polybiusModule.polybius,
+  convertPolybiusWordEncode: polybiusModule.convertPolybiusWordEncode,
+  convertPolybiusWordDecode: polybiusModule.convertPolybiusWordDecode,
+};
