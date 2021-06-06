@@ -6,6 +6,32 @@
 const caesarModule = (function () {
   // you can add any code you want within this function scope
 
+  // helper function to convert word
+  const convertWord = (word, shift) => {
+    // split word into letters ''
+    // loop through the input for each letter
+    word = word.split('').map((letter) => {
+      letter = letter.charCodeAt(0);
+      if (letter < 97 || letter > 122) {
+        return String.fromCharCode(letter);
+      }
+      letter = letter - 97 + shift;
+      // assign each letter a number
+      // add shift value
+      // assign letters to the new number value
+      // create conditions if letter value is <0 or >25
+      if (letter < 0) {
+        letter = 26 + letter;
+      }
+      if (letter > 25) {
+        letter = 25 - letter;
+      }
+      letter += 97;
+      return String.fromCharCode(letter);
+    });
+    return word.join('');
+  };
+
   // a substitution cypher where it takes the message and shifts each letter by the amount passed into
   // the function.
   // returns either a string, or boolean value false
@@ -14,23 +40,24 @@ const caesarModule = (function () {
     if (shift < -25 || shift > 25 || shift === 0) {
       return false;
     }
+    // create a result variable
+    let result;
 
     // set input message to lower case
-    input = input.toLowerCase();
+    result = input
+      .toLowerCase()
+      .split(' ')
+      .map((word) => convertWord(word, shift));
 
     // figure out if encode or decode is necessary
     if (!encode) {
       shift *= -1;
     }
     // split input by ' '
-    // split word into letters ''
-    // loop through the input for each letter
-    // assign each letter a number
-    // add shift value
-    // assign letters to the new number value
+
     // join letters back into words
     // join words with ' '
-    return input.join(' ');
+    return result.join(' ');
   };
 
   return {
