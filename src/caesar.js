@@ -10,15 +10,27 @@ const caesarModule = (function () {
   // the function.
   // returns either a string, or boolean value false
   const caesar = (input, shift = 0, encode = true) => {
+    // check all values are valid, else return false
     if (shift < -25 || shift > 25 || shift === 0) {
       return false;
     }
-    // check all values are valid, else return false
+
     // set input message to lower case
+    input = input.toLowerCase();
+
     // figure out if encode or decode is necessary
-    // create functionality to encode message
-    // create functionality to decode message
-    // return message
+    if (!encode) {
+      shift *= -1;
+    }
+    // split input by ' '
+    // split word into letters ''
+    // loop through the input for each letter
+    // assign each letter a number
+    // add shift value
+    // assign letters to the new number value
+    // join letters back into words
+    // join words with ' '
+    return input.join(' ');
   };
 
   return {
