@@ -48,35 +48,61 @@ const polybiusModule = (function () {
   // takes in a string message
   const convertPolybiusWordEncode = (word) => {
     // create result array
+    let result = [];
     // separate word into an array of letters
-    // match letter with coordinate number
-    // push coordinate to a result array
-    // join result array
-    // return result array that is a string of numbers
+    result = word.split('').map((letter) => {
+      return encodeCypher[letter];
+    });
+    // match letter with coordinate number and push coordinate to a result array
+    // join and return result array
+    return result.join('');
   };
 
   // takes in a string of numbers.
   const convertPolybiusWordDecode = (word) => {
+    if (word.length % 2 != 0) {
+      return false;
+    }
     // create result array
+    let result = [];
     // separate argument into single numbers and save in a temp array
+    let temp = word.split('');
     // run through the temp array with for loop that iterates every other index.
-    // in this loop, the pointer and the next item will be used to locate the letter
-    // push letter into the result array
-    // join result array
-    // return result array
+    for (let i = 0; i < temp.length; i += 2) {
+      // in this loop, the pointer and the next item will be used to locate the letter, and push into result array
+      result.push(decodeCypher[temp[i]][temp[i + 1]]);
+    }
+
+    // join and return result array
+    return result.join('');
   };
 
   // cypher where each letter is represented by a coordinate
   // arguments include an input and whether we are encoding or decoding
   // returns a string of numbers or the decoded message
   const polybius = (input, encode = true) => {
-    // your solution code here
-    // be sure input is in lower case
-    // create an array with the input separated by ' '
-    // if encode===true, run convertPolybiusWordEncode on each word
-    // if encode===false, run convertPolybiusWordDecode on each word
-    // join words with ' '
-    // return a string
+    // if encode is false, check that input value is valid
+    if (!encode) {
+      let length = input.split(' ').reduce((acc, curr) => acc + curr.length, 0);
+      if (length % 2 != 0) {
+        return false;
+      }
+    }
+
+    // be sure input is in lower case and create an array with the input separated by ' '
+    return (
+      input
+        .toLowerCase()
+        .split(' ')
+        .map((word) => {
+          // determine which helper function to run
+          return encode
+            ? convertPolybiusWordEncode(word)
+            : convertPolybiusWordDecode(word);
+        })
+        // join words with ' ' and return
+        .join(' ')
+    );
   };
 
   return {
