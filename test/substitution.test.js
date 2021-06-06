@@ -1,5 +1,9 @@
 // Write your tests here!
-const { substitution } = require('../src/substitution');
+const {
+  substitution,
+  substitutionEncode,
+  substitutionDecode,
+} = require('../src/substitution');
 const expect = require('chai').expect;
 
 describe('substitution', () => {
@@ -44,6 +48,22 @@ describe('substitution', () => {
       false
     );
     const expected = 'you are an excellent spy';
+    expect(actual).to.equal(expected);
+  });
+});
+
+describe('substitutionEncode', () => {
+  it('should encode a message with valid arguments', () => {
+    const actual = substitutionEncode('thinkful', 'xoyqmcgrukswaflnthdjpzibev');
+    const expected = 'jrufscpw';
+    expect(actual).to.equal(expected);
+  });
+  it('should encode a message with multiple words and valid arguments', () => {
+    const actual = substitutionEncode(
+      'you are an excellent spy',
+      'xoyqmcgrukswaflnthdjpzibev'
+    );
+    const expected = 'elpxhmxfmbymwwmfjdne';
     expect(actual).to.equal(expected);
   });
 });
