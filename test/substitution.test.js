@@ -28,4 +28,22 @@ describe('substitution', () => {
     const expected = 'elp xhm xf mbymwwmfj dne';
     expect(actual).to.equal(expected);
   });
+  it('should decode a message with valid arguments', () => {
+    const actual = substitution(
+      'jrufscpw',
+      'xoyqmcgrukswaflnthdjpzibev',
+      false
+    );
+    const expected = 'thinkful';
+    expect(actual).to.equal(expected);
+  });
+  it('should decode a message with multiple words and valid arguments', () => {
+    const actual = substitution(
+      'elp xhm xf mbymwwmfj dne',
+      'xoyqmcgrukswaflnthdjpzibev',
+      false
+    );
+    const expected = 'you are an excellent spy';
+    expect(actual).to.equal(expected);
+  });
 });
