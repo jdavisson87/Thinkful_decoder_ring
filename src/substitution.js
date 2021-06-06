@@ -64,7 +64,21 @@ const substitutionModule = (function () {
       .join('');
   };
 
-  const substitutionDecode = (word, alphabet) => {};
+  // 2 parameters: word and alphabet cypher
+  const substitutionDecode = (word, alphabet) => {
+    // split word into letters and loop through each letter
+    return word
+      .split('')
+      .map((letter) => {
+        // match the letter to the alphabet cypher and find the index of it
+        let index = alphabet.split('').indexOf(letter);
+        let alphaKeys = Object.keys(alpha);
+        return alphaKeys[index];
+        // create array of object.keys of the alpha object
+        // return alpha object at the index that was found
+      })
+      .join('');
+  };
 
   // 3 parameters: the message, the alphabet for substitution, and if we are encoding or decoding
   // returns an encoded or decoded message
