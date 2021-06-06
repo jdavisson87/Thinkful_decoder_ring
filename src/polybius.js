@@ -6,8 +6,8 @@
 const polybiusModule = (function () {
   // you can add any code you want within this function scope
 
-  // encode cypher
-  const encodeCypher = {
+  // encode cipher
+  const encodeCipher = {
     a: '11',
     b: '21',
     c: '31',
@@ -36,8 +36,8 @@ const polybiusModule = (function () {
     z: '55',
   };
 
-  // decode cypher
-  const decodeCypher = {
+  // decode cipher
+  const decodeCipher = {
     1: { 1: 'a', 2: 'f', 3: 'l', 4: 'q', 5: 'v' },
     2: { 1: 'b', 2: 'g', 3: 'm', 4: 'r', 5: 'w' },
     3: { 1: 'c', 2: 'h', 3: 'n', 4: 's', 5: 'x' },
@@ -51,7 +51,7 @@ const polybiusModule = (function () {
     let result = [];
     // separate word into an array of letters
     result = word.split('').map((letter) => {
-      return encodeCypher[letter];
+      return encodeCipher[letter];
     });
     // match letter with coordinate number and push coordinate to a result array
     // join and return result array
@@ -70,14 +70,14 @@ const polybiusModule = (function () {
     // run through the temp array with for loop that iterates every other index.
     for (let i = 0; i < temp.length; i += 2) {
       // in this loop, the pointer and the next item will be used to locate the letter, and push into result array
-      result.push(decodeCypher[temp[i]][temp[i + 1]]);
+      result.push(decodeCipher[temp[i]][temp[i + 1]]);
     }
 
     // join and return result array
     return result.join('');
   };
 
-  // cypher where each letter is represented by a coordinate
+  // cipher where each letter is represented by a coordinate
   // arguments include an input and whether we are encoding or decoding
   // returns a string of numbers or the decoded message
   const polybius = (input, encode = true) => {

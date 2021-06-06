@@ -33,7 +33,7 @@ const caesarModule = (function () {
     return word.join('');
   };
 
-  // a substitution cypher where it takes the message and shifts each letter by the amount passed into the function.
+  // a substitution cipher where it takes the message and shifts each letter by the amount passed into the function.
   // returns either a string, or boolean value false
   const caesar = (input, shift = 0, encode = true) => {
     // check all values are valid, else return false

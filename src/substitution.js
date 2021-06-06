@@ -50,27 +50,27 @@ const substitutionModule = (function () {
     return true;
   };
 
-  // 2 parameters: word and alphabet cypher
+  // 2 parameters: word and alphabet cipher
   const substitutionEncode = (word, alphabet) => {
     // split word into letters and loop through each letter
     return word
       .split('')
       .map((letter) => {
         // figure out index of each letter using the alpha object
-        // return letter of alphabet cypher at the index that was located
+        // return letter of alphabet cipher at the index that was located
         return alphabet[alpha[letter]];
         // join word
       })
       .join('');
   };
 
-  // 2 parameters: word and alphabet cypher
+  // 2 parameters: word and alphabet cipher
   const substitutionDecode = (word, alphabet) => {
     // split word into letters and loop through each letter
     return word
       .split('')
       .map((letter) => {
-        // match the letter to the alphabet cypher and find the index of it
+        // match the letter to the alphabet cipher and find the index of it
         let index = alphabet.split('').indexOf(letter);
         let alphaKeys = Object.keys(alpha);
         return alphaKeys[index];
