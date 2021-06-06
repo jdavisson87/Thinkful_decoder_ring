@@ -1,4 +1,4 @@
-const { caesar } = require('../src/caesar.js');
+const { caesar, convertWord } = require('../src/caesar.js');
 const expect = require('chai').expect;
 
 describe('caesar', () => {
@@ -23,14 +23,32 @@ describe('caesar', () => {
     const expected = 'wklqnixo';
     expect(actual).to.equal(expected);
   });
+  it('should decode a message', () => {
+    const actual = caesar('wklqnixo', 3, false);
+    const expected = 'thinkful';
+    expect(actual).to.equal(expected);
+  });
+});
+
+describe('convertWord', () => {
+  it('should encode a message', () => {
+    const actual = convertWord('thinkful', 3);
+    const expected = 'wklqnixo';
+    expect(actual).to.equal(expected);
+  });
   it('should handle a negative shift value', () => {
-    const actual = caesar('thinkful', -3);
+    const actual = convertWord('thinkful', -3);
     const expected = 'qefkhcri';
     expect(actual).to.equal(expected);
   });
   it('should handle letters at the beginning of the alphabet with a negative shift value', () => {
-    const actual = caesar('a', -3);
+    const actual = convertWord('a', -3);
     const expected = 'x';
+    expect(actual).to.equal(expected);
+  });
+  it('should handle letters at the end of the alphabet with a positive shift value', () => {
+    const actual = convertWord('z', 1);
+    const expected = 'a';
     expect(actual).to.equal(expected);
   });
 });

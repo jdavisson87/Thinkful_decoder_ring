@@ -27,8 +27,8 @@ const caesarModule = (function () {
       if (letter > 25) {
         letter = (letter % 25) - 1;
       }
-      letter += 97;
-      return String.fromCharCode(letter);
+      // letter += 97;
+      return String.fromCharCode(letter + 97);
     });
     return word.join('');
   };
@@ -41,22 +41,20 @@ const caesarModule = (function () {
     if (shift < -25 || shift > 25 || shift === 0) {
       return false;
     }
-    // create a result variable
-    let result;
 
     // figure out if encode or decode is necessary
     if (!encode) {
       shift *= -1;
     }
+
     // set input message to lower case
     // split input by ' '
-    result = input
+    // join words with ' '
+    return input
       .toLowerCase()
       .split(' ')
-      .map((word) => convertWord(word, shift));
-
-    // join words with ' '
-    return result.join(' ');
+      .map((word) => convertWord(word, shift))
+      .join(' ');
   };
 
   return {
