@@ -6,9 +6,21 @@
 const caesarModule = (function () {
   // you can add any code you want within this function scope
 
-  function caesar(input, shift, encode = true) {
-    // your solution code here
-  }
+  // a substitution cypher where it takes the message and shifts each letter by the amount passed into
+  // the function.
+  // returns either a string, or boolean value false
+  const caesar = (input, shift, encode = true) => {
+    if (shift < -25) {
+      console.log(shift);
+      return false;
+    }
+    // check all values are valid, else return false
+    // set input message to lower case
+    // figure out if encode or decode is necessary
+    // create functionality to encode message
+    // create functionality to decode message
+    // return message
+  };
 
   return {
     caesar,
