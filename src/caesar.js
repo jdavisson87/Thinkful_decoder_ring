@@ -27,7 +27,6 @@ const caesarModule = (function () {
       if (letter > 25) {
         letter = (letter % 25) - 1;
       }
-      // letter += 97;
       return String.fromCharCode(letter + 97);
     });
     return word.join('');
