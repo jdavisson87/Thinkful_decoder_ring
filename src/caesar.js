@@ -33,8 +33,7 @@ const caesarModule = (function () {
     return word.join('');
   };
 
-  // a substitution cypher where it takes the message and shifts each letter by the amount passed into
-  // the function.
+  // a substitution cypher where it takes the message and shifts each letter by the amount passed into the function.
   // returns either a string, or boolean value false
   const caesar = (input, shift = 0, encode = true) => {
     // check all values are valid, else return false
@@ -47,9 +46,7 @@ const caesarModule = (function () {
       shift *= -1;
     }
 
-    // set input message to lower case
-    // split input by ' '
-    // join words with ' '
+    // set input message to lower case, split with ' ', run helper function, then join words back together
     return input
       .toLowerCase()
       .split(' ')
