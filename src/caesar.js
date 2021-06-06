@@ -9,9 +9,8 @@ const caesarModule = (function () {
   // a substitution cypher where it takes the message and shifts each letter by the amount passed into
   // the function.
   // returns either a string, or boolean value false
-  const caesar = (input, shift, encode = true) => {
-    if (shift < -25) {
-      console.log(shift);
+  const caesar = (input, shift = 0, encode = true) => {
+    if (shift < -25 || shift > 25 || shift === 0) {
       return false;
     }
     // check all values are valid, else return false
